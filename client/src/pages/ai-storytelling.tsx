@@ -24,7 +24,7 @@ export default function AiStorytelling() {
     productName: "",
     craftType: "",
     heritage: "",
-    artisanId: "",
+    artisanId: "artisan-1", // Default to first artisan
   });
   const [generatedStory, setGeneratedStory] = useState<StoryGenerationResponse | null>(null);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -215,7 +215,7 @@ export default function AiStorytelling() {
                       <Label htmlFor="craftType" className="text-sm font-medium text-foreground">
                         Craft Type <span className="text-destructive">*</span>
                       </Label>
-                      <Select value={formData.craftType} onValueChange={(value) => setFormData(prev => ({ ...prev, craftType: value }))}>
+                      <Select value={formData.craftType || "ceramics"} onValueChange={(value) => setFormData(prev => ({ ...prev, craftType: value }))}>
                         <SelectTrigger className="mt-2" data-testid="select-craft-type">
                           <SelectValue placeholder="Select craft type..." />
                         </SelectTrigger>
